@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinAnalyse - Diagnostic Financier pour Freelances</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Poppins',sans-serif;color:#1a1a1a;background:#fff;}
+    html{scroll-behavior:smooth;}
+
+    /* NAV */
+    nav{padding:1rem 2rem;border-bottom:1px solid #e0e0e0;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#fff;z-index:100;}
+    .logo-wrap{display:flex;align-items:center;gap:10px;}
+    .logo-svg{width:40px;height:40px;}
+    .logo-text{font-size:20px;font-weight:700;background:linear-gradient(135deg,#185FA5,#1D9E75);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    nav a{color:#666;text-decoration:none;font-size:14px;margin-left:1.5rem;}
+    nav a:hover{color:#185FA5;}
+
+    /* HERO */
+    .hero{padding:5rem 2rem;background:linear-gradient(135deg,#E6F1FB 0%,#E1F5EE 100%);display:flex;align-items:center;justify-content:center;gap:4rem;flex-wrap:wrap;}
+    .hero-text{max-width:560px;}
+    .hero h1{font-size:40px;font-weight:700;margin-bottom:1rem;line-height:1.2;}
+    .hero p{font-size:17px;color:#555;margin-bottom:2rem;line-height:1.7;}
+    .btn-primary{padding:14px 36px;font-size:15px;font-weight:600;background:linear-gradient(135deg,#185FA5,#0C447C);color:#fff;border:none;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-block;box-shadow:0 4px 14px rgba(24,95,165,0.3);transition:all 0.2s;}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(24,95,165,0.4);}
+    .btn-secondary{padding:14px 36px;font-size:15px;font-weight:600;background:#fff;color:#185FA5;border:2px solid #185FA5;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-block;margin-left:12px;transition:all 0.2s;}
+    .btn-secondary:hover{background:#f0f7ff;}
+
+    /* AVATAR */
+    .avatar-wrap{position:relative;}
+    .avatar-card{background:#fff;border-radius:20px;padding:2rem;box-shadow:0 10px 40px rgba(24,95,165,0.15);text-align:center;min-width:220px;}
+    .avatar-img{width:120px;height:120px;border-radius:50%;margin:0 auto 1rem;overflow:hidden;border:4px solid #185FA5;}
+    .avatar-name{font-weight:600;font-size:16px;margin-bottom:4px;}
+    .avatar-title{font-size:12px;color:#888;margin-bottom:12px;}
+    .avatar-badge{background:linear-gradient(135deg,#185FA5,#1D9E75);color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;}
+    .stats-row{display:flex;gap:12px;margin-top:1rem;}
+    .stat{flex:1;background:#f9f9f9;border-radius:8px;padding:8px;}
+    .stat-num{font-weight:700;font-size:16px;color:#185FA5;}
+    .stat-lbl{font-size:10px;color:#999;}
+
+    /* SECTIONS */
+    section{padding:4rem 2rem;}
+    .container{max-width:1100px;margin:0 auto;}
+    h2{font-size:30px;font-weight:700;text-align:center;margin-bottom:0.5rem;}
+    .subtitle{text-align:center;color:#888;margin-bottom:2.5rem;font-size:15px;}
+
+    /* SERVICES */
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:2rem;}
+    .service-card{padding:1.5rem;border:2px solid #e0e0e0;border-radius:12px;cursor:pointer;transition:all 0.3s;background:#fff;}
+    .service-card:hover,.service-card.active{border-color:#185FA5;background:#f0f7ff;transform:scale(1.02);}
+    .service-icon{font-size:30px;margin-bottom:10px;}
+    .service-card h3{font-size:16px;font-weight:600;margin-bottom:4px;}
+    .service-card p{font-size:12px;color:#999;margin-bottom:10px;}
+    .service-price{font-size:24px;font-weight:700;color:#185FA5;}
+    .details-box{padding:1.5rem;background:#f9f9f9;border-radius:12px;}
+    .details-box h3{font-size:17px;font-weight:600;margin-bottom:1rem;}
+    .details-box ul{list-style:none;}
+    .details-box li{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:14px;}
+    .check{color:#1D9E75;font-weight:700;}
+
+    /* PROCESS */
+    .process{background:#f9f9f9;}
+    .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;max-width:900px;margin:0 auto;}
+    .step{text-align:center;}
+    .step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#185FA5,#1D9E75);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;margin:0 auto 10px;}
+    .step h4{font-size:13px;font-weight:600;margin-bottom:4px;}
+    .step p{font-size:11px;color:#999;line-height:1.5;}
+
+    /* CTA SECTION */
+    .cta-section{background:linear-gradient(135deg,#185FA5,#1D9E75);text-align:center;padding:4rem 2rem;color:#fff;}
+    .cta-section h2{color:#fff;margin-bottom:1rem;}
+    .cta-section p{color:rgba(255,255,255,0.85);margin-bottom:2rem;}
+    .btn-white{padding:14px 36px;font-size:15px;font-weight:600;background:#fff;color:#185FA5;border:none;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.15);}
+
+    /* TARIFS */
+    .tarifs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+    .tarif-card{padding:1.5rem;border:1px solid #e0e0e0;border-radius:12px;background:#fff;transition:all 0.2s;}
+    .tarif-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(24,95,165,0.12);}
+    .tarif-card.popular{background:#f0f7ff;border-color:#185FA5;}
+    .tarif-card .price{font-size:28px;font-weight:700;color:#185FA5;margin-bottom:8px;}
+    .tarif-card h3{font-size:15px;font-weight:600;margin-bottom:6px;}
+    .tarif-card p{font-size:12px;color:#999;}
+    .popular-badge{display:inline-block;background:#185FA5;color:#fff;font-size:10px;padding:2px 10px;border-radius:20px;margin-bottom:8px;font-weight:600;}
+
+    /* FAQ */
+    .faq-section{background:#f9f9f9;}
+    .faq-container{max-width:780px;margin:0 auto;}
+    .faq-item{margin-bottom:10px;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;}
+    .faq-btn{width:100%;padding:1rem 1.2rem;background:#fff;border:none;text-align:left;font-size:14px;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Poppins',sans-serif;}
+    .faq-btn:hover{background:#f9f9f9;}
+    .faq-answer{padding:1rem 1.2rem;background:#f9f9f9;font-size:14px;color:#666;line-height:1.7;display:none;}
+    .faq-answer.open{display:block;}
+
+    /* DIAGNOSTIC MODAL */
+    .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:999;align-items:center;justify-content:center;}
+    .modal-overlay.open{display:flex;}
+    .modal{background:#fff;border-radius:16px;padding:2.5rem;max-width:560px;width:90%;max-height:90vh;overflow-y:auto;position:relative;}
+    .modal-close{position:absolute;top:1rem;right:1.2rem;font-size:22px;cursor:pointer;color:#888;background:none;border:none;font-family:'Poppins',sans-serif;}
+    .modal h2{font-size:22px;font-weight:700;margin-bottom:0.5rem;color:#185FA5;}
+    .modal .step-info{font-size:12px;color:#aaa;margin-bottom:1.5rem;}
+    .progress-bar{width:100%;height:5px;background:#e0e0e0;border-radius:3px;margin-bottom:1.5rem;overflow:hidden;}
+    .progress-fill{height:100%;background:linear-gradient(135deg,#185FA5,#1D9E75);transition:width 0.3s;}
+    .modal label{font-size:14px;font-weight:600;display:block;margin-bottom:6px;}
+    .modal input,.modal select{width:100%;padding:10px 14px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Poppins',sans-serif;margin-bottom:1.2rem;transition:border 0.2s;}
+    .modal input:focus,.modal select:focus{border-color:#185FA5;outline:none;}
+    .modal-btns{display:flex;gap:12px;margin-top:1rem;}
+    .btn-prev{flex:1;padding:12px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:8px;cursor:pointer;font-size:14px;font-family:'Poppins',sans-serif;}
+    .btn-next{flex:2;padding:12px;background:linear-gradient(135deg,#185FA5,#0C447C);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;font-family:'Poppins',sans-serif;}
+
+    /* RAPPORT */
+    .rapport{display:none;}
+    .rapport.show{display:block;}
+    .score-circle{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#185FA5,#1D9E75);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 1.5rem;box-shadow:0 6px 20px rgba(24,95,165,0.3);}
+    .score-num{font-size:32px;font-weight:700;line-height:1;}
+    .score-lbl{font-size:10px;opacity:0.8;}
+    .rapport-section{margin-bottom:1.2rem;}
+    .rapport-section h4{font-size:14px;font-weight:700;margin-bottom:8px;}
+    .point{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;font-size:13px;}
+    .point.good{color:#1D9E75;}
+    .point.bad{color:#E24B4A;}
+    .point.reco{color:#185FA5;}
+    .rapport-cta{background:linear-gradient(135deg,#E6F1FB,#E1F5EE);border-radius:12px;padding:1.2rem;text-align:center;margin-top:1.5rem;}
+    .rapport-cta p{font-size:13px;color:#555;margin-bottom:10px;}
+    .btn-analyse{padding:10px 24px;background:linear-gradient(135deg,#185FA5,#0C447C);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;font-family:'Poppins',sans-serif;}
+
+    /* FOOTER */
+    footer{padding:2rem;text-align:center;font-size:12px;color:#aaa;border-top:1px solid #e0e0e0;}
+
+    @media(max-width:600px){
+      .hero{flex-direction:column;text-align:center;}
+      .hero h1{font-size:28px;}
+      nav a{display:none;}
+      .avatar-wrap{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo-wrap">
+    <!-- LOGO SVG -->
+    <svg class="logo-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#185FA5"/>
+          <stop offset="100%" style="stop-color:#1D9E75"/>
+        </linearGradient>
+      </defs>
+      <circle cx="20" cy="20" r="20" fill="url(#lg1)"/>
+      <rect x="8" y="22" width="5" height="10" fill="#FFD700" rx="1"/>
+      <rect x="15" y="18" width="5" height="14" fill="#fff" rx="1" opacity="0.9"/>
+      <rect x="22" y="12" width="5" height="20" fill="#FFD700" rx="1"/>
+      <rect x="29" y="16" width="5" height="16" fill="#fff" rx="1" opacity="0.9"/>
+      <polyline points="10,21 17,16 24,10 31,14" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </svg>
+    <span class="logo-text">FinAnalyse</span>
+  </div>
+  <div>
+    <a href="#services">Services</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#faq">FAQ</a>
+    <a href="#" onclick="openDiagnostic()" style="background:#185FA5;color:#fff;padding:8px 16px;border-radius:6px;margin-left:1rem;">Diagnostic gratuit</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Comprenez votre bilan<br/>en 5 minutes</h1>
+    <p>Diagnostic gratuit de votre santé financière. Analyse complète. Recommandations actionnables pour freelances et indépendants.</p>
+    <a href="#" onclick="openDiagnostic()" class="btn-primary">Commencer (gratuit)</a>
+    <a href="#services" class="btn-secondary">En savoir plus</a>
+  </div>
+
+  <!-- AVATAR CARD -->
+  <div class="avatar-wrap">
+    <div class="avatar-card">
+      <!-- AVATAR VISAGE SVG -->
+      <div class="avatar-img">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="120" height="120">
+          <defs>
+            <linearGradient id="bg-av" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#185FA5"/>
+              <stop offset="100%" style="stop-color:#1D9E75"/>
+            </linearGradient>
+          </defs>
+          <!-- Fond -->
+          <rect width="120" height="120" fill="url(#bg-av)"/>
+          <!-- Corps / épaules -->
+          <ellipse cx="60" cy="115" rx="38" ry="20" fill="#0C447C"/>
+          <!-- Cou -->
+          <rect x="50" y="78" width="20" height="18" fill="#FDBCB4" rx="4"/>
+          <!-- Tête -->
+          <ellipse cx="60" cy="60" rx="30" ry="32" fill="#FDBCB4"/>
+          <!-- Cheveux -->
+          <ellipse cx="60" cy="35" rx="30" ry="16" fill="#2C2C2A"/>
+          <rect x="30" y="35" width="8" height="22" fill="#2C2C2A" rx="4"/>
+          <rect x="82" y="35" width="8" height="22" fill="#2C2C2A" rx="4"/>
+          <!-- Yeux -->
+          <ellipse cx="46" cy="60" rx="5" ry="6" fill="#fff"/>
+          <ellipse cx="74" cy="60" rx="5" ry="6" fill="#fff"/>
+          <ellipse cx="47" cy="61" rx="3" ry="3.5" fill="#1a1a1a"/>
+          <ellipse cx="75" cy="61" rx="3" ry="3.5" fill="#1a1a1a"/>
+          <circle cx="48" cy="60" r="1" fill="#fff"/>
+          <circle cx="76" cy="60" r="1" fill="#fff"/>
+          <!-- Sourcils -->
+          <path d="M41 53 Q46 50 51 53" stroke="#2C2C2A" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M69 53 Q74 50 79 53" stroke="#2C2C2A" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Nez -->
+          <ellipse cx="60" cy="70" rx="3" ry="4" fill="#F0A090"/>
+          <!-- Sourire -->
+          <path d="M48 80 Q60 90 72 80" stroke="#C0706A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Costume -->
+          <path d="M22 120 Q22 96 60 92 Q98 96 98 120" fill="#185FA5"/>
+          <path d="M60 92 L54 110 L60 108 L66 110 Z" fill="#fff"/>
+          <!-- Cravate -->
+          <polygon points="57,95 63,95 61,115 59,115" fill="#1D9E75"/>
+        </svg>
+      </div>
+      <div class="avatar-name">Analyste FinAnalyse</div>
+      <div class="avatar-title">Expert en diagnostic financier</div>
+      <div class="avatar-badge">✓ Disponible maintenant</div>
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-num">100+</div>
+          <div class="stat-lbl">Analyses</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">48h</div>
+          <div class="stat-lbl">Délai</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4.9★</div>
+          <div class="stat-lbl">Note</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <h2>Nos services</h2>
+    <p class="subtitle">Du diagnostic gratuit à l'analyse complète</p>
+    <div class="services-grid">
+      <div class="service-card active" onclick="selectService(0)">
+        <div class="service-icon">📄</div>
+        <h3>Diagnostic gratuit</h3>
+        <p>5 min pour tester</p>
+        <div class="service-price">0€</div>
+      </div>
+      <div class="service-card" onclick="selectService(1)">
+        <div class="service-icon">📊</div>
+        <h3>Analyse financière</h3>
+        <p>Compréhension complète</p>
+        <div class="service-price">300€</div>
+      </div>
+      <div class="service-card" onclick="selectService(2)">
+        <div class="service-icon">📈</div>
+        <h3>Valorisation approfondie</h3>
+        <p>Pour cession/levée</p>
+        <div class="service-price">800€</div>
+      </div>
+      <div class="service-card" onclick="selectService(3)">
+        <div class="service-icon">⚡</div>
+        <h3>Rapport complet</h3>
+        <p>Solution premium</p>
+        <div class="service-price">1500€</div>
+      </div>
+    </div>
+    <div class="details-box">
+      <h3 id="details-title">Diagnostic gratuit</h3>
+      <ul id="details-list">
+        <li><span class="check">✓</span> Questionnaire simple 5 min</li>
+        <li><span class="check">✓</span> Score de santé financière</li>
+        <li><span class="check">✓</span> 3 recommandations immédiates</li>
+        <li><span class="check">✓</span> Rapport reçu par email</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <h2>Comment ça marche</h2>
+    <p class="subtitle">5 étapes simples et rapides</p>
+    <div class="steps-grid">
+      <div class="step"><div class="step-num">1</div><h4>Diagnostic</h4><p>Questionnaire gratuit 5 min</p></div>
+      <div class="step"><div class="step-num">2</div><h4>Résultat</h4><p>Rapport auto-généré</p></div>
+      <div class="step"><div class="step-num">3</div><h4>Décision</h4><p>Vous choisissez</p></div>
+      <div class="step"><div class="step-num">4</div><h4>Analyse</h4><p>Rapport personnalisé</p></div>
+      <div class="step"><div class="step-num">5</div><h4>Livraison</h4><p>PDF pro 24-48h</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Prêt à analyser votre bilan ?</h2>
+  <p>Diagnostic gratuit en 5 minutes, résultats immédiats</p>
+  <a href="#" onclick="openDiagnostic()" class="btn-white">Commencer le diagnostic gratuit</a>
+</section>
+
+<!-- TARIFS -->
+<section id="tarifs">
+  <div class="container">
+    <h2>Tarification transparente</h2>
+    <p class="subtitle">Choisissez ce qui vous convient</p>
+    <div class="tarifs-grid">
+      <div class="tarif-card">
+        <div class="price">0€</div>
+        <h3>Diagnostic gratuit</h3>
+        <p>5 min pour tester votre santé financière</p>
+      </div>
+      <div class="tarif-card popular">
+        <div class="popular-badge">⭐ Populaire</div>
+        <div class="price">300€</div>
+        <h3>Analyse financière</h3>
+        <p>Analyse complète + benchmarking + plan d'action</p>
+      </div>
+      <div class="tarif-card">
+        <div class="price">800€</div>
+        <h3>Valorisation approfondie</h3>
+        <p>DCF + multiples + scénarios de croissance</p>
+      </div>
+      <div class="tarif-card">
+        <div class="price">1500€</div>
+        <h3>Rapport complet</h3>
+        <p>Audit complet + présentation investisseurs</p>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:#999;margin-top:1.5rem;">💡 Commencez gratuit. Payant seulement si vous êtes convaincu.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <h2>Questions fréquentes</h2>
+    <p class="subtitle">Tout ce que vous devez savoir</p>
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(0)">Vous êtes expert-comptable ? <span id="fi-0">+</span></button>
+        <div class="faq-answer" id="fa-0">Non, nous offrons une analyse complémentaire à moindre coût. Nos services ne remplacent pas l'expert-comptable officiel mais vous aide à comprendre votre bilan avant de le rencontrer.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(1)">Comment ça marche exactement ? <span id="fi-1">+</span></button>
+        <div class="faq-answer" id="fa-1">Vous commencez par un diagnostic gratuit de 5 minutes. Si convaincu, vous choisissez une analyse payante. Nous générons un rapport professionnel avec recommandations sous 24-48h.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(2)">Quels freelances sont éligibles ? <span id="fi-2">+</span></button>
+        <div class="faq-answer" id="fa-2">Tous les secteurs ! Services, conseil, e-commerce, artisans, IT, marketing... Si vous êtes indépendant et avez un bilan, c'est pour vous.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(3)">Combien de temps pour le rapport ? <span id="fi-3">+</span></button>
+        <div class="faq-answer" id="fa-3">24 à 48h après réception de vos données complètes. Vous recevez un PDF professionnel prêt à utiliser, accompagné de recommandations personnalisées.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(4)">Est-ce confidentiel ? <span id="fi-4">+</span></button>
+        <div class="faq-answer" id="fa-4">Oui, vos données financières sont strictement confidentielles. Elles ne sont jamais partagées ou revendues à des tiers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="margin-bottom:1rem;">
+    <svg viewBox="0 0 40 40" width="32" height="32" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px;">
+      <defs><linearGradient id="lg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#185FA5"/><stop offset="100%" style="stop-color:#1D9E75"/></linearGradient></defs>
+      <circle cx="20" cy="20" r="20" fill="url(#lg2)"/>
+      <rect x="8" y="22" width="5" height="10" fill="#FFD700" rx="1"/>
+      <rect x="15" y="18" width="5" height="14" fill="#fff" rx="1" opacity="0.9"/>
+      <rect x="22" y="12" width="5" height="20" fill="#FFD700" rx="1"/>
+      <rect x="29" y="16" width="5" height="16" fill="#fff" rx="1" opacity="0.9"/>
+      <polyline points="10,21 17,16 24,10 31,14" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </svg>
+    <span style="font-weight:700;font-size:16px;background:linear-gradient(135deg,#185FA5,#1D9E75);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">FinAnalyse</span>
+  </div>
+  <p>© 2026 FinAnalyse. Service d'analyse financière pour indépendants et freelances.</p>
+</footer>
+
+<!-- DIAGNOSTIC MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeIfOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeDiagnostic()">×</button>
+
+    <!-- FORMULAIRE -->
+    <div id="form-view">
+      <h2>🔍 Diagnostic Gratuit</h2>
+      <div class="step-info" id="step-info">Étape 1 sur 5</div>
+      <div class="progress-bar"><div class="progress-fill" id="progress" style="width:20%"></div></div>
+
+      <div id="q0">
+        <label>Votre prénom</label>
+        <input type="text" id="nom" placeholder="Ex: Jean"/>
+        <label>Votre email (pour recevoir le rapport)</label>
+        <input type="email" id="email" placeholder="jean@exemple.com"/>
+      </div>
+      <div id="q1" style="display:none">
+        <label>Secteur d'activité</label>
+        <select id="secteur">
+          <option value="">Sélectionnez...</option>
+          <option>Conseil / Coaching</option>
+          <option>Freelance IT / Dev</option>
+          <option>E-commerce</option>
+          <option>Graphisme / Design</option>
+          <option>Marketing / Communication</option>
+          <option>Rédaction / Traduction</option>
+          <option>Artisan / Commerce</option>
+          <option>Autre</option>
+        </select>
+        <label>Chiffre d'affaires annuel</label>
+        <select id="ca">
+          <option value="">Sélectionnez...</option>
+          <option>Moins de 30 000€</option>
+          <option>30 000 - 50 000€</option>
+          <option>50 000 - 80 000€</option>
+          <option>80 000 - 120 000€</option>
+          <option>Plus de 120 000€</option>
+        </select>
+      </div>
+      <div id="q2" style="display:none">
+        <label>Depuis combien de temps en activité ?</label>
+        <select id="anciennete">
+          <option value="">Sélectionnez...</option>
+          <option>Moins d'1 an</option>
+          <option>1 à 2 ans</option>
+          <option>2 à 5 ans</option>
+          <option>5 à 10 ans</option>
+          <option>Plus de 10 ans</option>
+        </select>
+        <label>Votre trésorerie est-elle stable ?</label>
+        <select id="tresorerie">
+          <option value="">Sélectionnez...</option>
+          <option>Très stable</option>
+          <option>Stable</option>
+          <option>Parfois tendue</option>
+          <option>Souvent tendue</option>
+        </select>
+      </div>
+      <div id="q3" style="display:none">
+        <label>Délai de paiement clients (en jours)</label>
+        <select id="delai">
+          <option value="">Sélectionnez...</option>
+          <option>Moins de 15 jours</option>
+          <option>15 à 30 jours</option>
+          <option>30 à 60 jours</option>
+          <option>Plus de 60 jours</option>
+        </select>
+        <label>Avez-vous des dettes professionnelles ?</label>
+        <select id="dettes">
+          <option value="">Sélectionnez...</option>
+          <option>Non, aucune</option>
+          <option>Moins de 5 000€</option>
+          <option>5 000 à 20 000€</option>
+          <option>Plus de 20 000€</option>
+        </select>
+      </div>
+      <div id="q4" style="display:none">
+        <label>Résultat net annuel estimé</label>
+        <select id="resultat">
+          <option value="">Sélectionnez...</option>
+          <option>Moins de 10 000€</option>
+          <option>10 000 à 25 000€</option>
+          <option>25 000 à 50 000€</option>
+          <option>Plus de 50 000€</option>
+        </select>
+        <label>Votre principal problème financier ?</label>
+        <select id="probleme">
+          <option value="">Sélectionnez...</option>
+          <option>Trésorerie insuffisante</option>
+          <option>Rentabilité faible</option>
+          <option>Dettes trop élevées</option>
+          <option>Manque de visibilité</option>
+          <option>Aucun problème particulier</option>
+        </select>
+      </div>
+
+      <div class="modal-btns">
+        <button class="btn-prev" id="btn-prev" onclick="prevStep()" style="display:none">← Retour</button>
+        <button class="btn-next" onclick="nextStep()" id="btn-next">Continuer →</button>
+      </div>
+    </div>
+
+    <!-- RAPPORT -->
+    <div id="rapport-view" style="display:none">
+      <div style="text-align:center;margin-bottom:1.5rem;">
+        <h2 style="color:#1a1a1a;margin-bottom:0.3rem;">Votre diagnostic</h2>
+        <p style="font-size:13px;color:#aaa;" id="rapport-date"></p>
+      </div>
+      <div class="score-circle">
+        <div class="score-num" id="score-num">7.2</div>
+        <div class="score-lbl">/ 10</div>
+      </div>
+      <p style="text-align:center;font-size:14px;font-weight:600;margin-bottom:1.5rem;" id="score-label"></p>
+
+      <div class="rapport-section">
+        <h4 style="color:#1D9E75;">✅ Points forts</h4>
+        <div id="points-forts"></div>
+      </div>
+      <div class="rapport-section">
+        <h4 style="color:#E24B4A;">⚠️ Points à améliorer</h4>
+        <div id="points-faibles"></div>
+      </div>
+      <div class="rapport-section">
+        <h4 style="color:#185FA5;">🎯 Recommandations</h4>
+        <div id="recommandations"></div>
+      </div>
+
+      <div class="rapport-cta">
+        <p>Voulez-vous une <strong>analyse financière complète</strong> (300€) avec un plan d'action détaillé ?</p>
+        <button class="btn-analyse" onclick="demanderAnalyse()">Oui, je veux l'analyse complète</button>
+      </div>
+      <button onclick="closeDiagnostic()" style="width:100%;margin-top:10px;padding:10px;background:none;border:none;color:#aaa;cursor:pointer;font-size:13px;">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // SERVICES
+  const servicesData = [
+    { title:"Diagnostic gratuit", features:["Questionnaire simple 5 min","Score de santé financière","3 recommandations immédiates","Rapport reçu par email"] },
+    { title:"Analyse financière", features:["Analyse détaillée du bilan","Ratios financiers clés","Benchmarking sectoriel","Plan d'action concret"] },
+    { title:"Valorisation approfondie", features:["Multiples de valorisation","DCF complet","Comparables sectoriels","Recommandations stratégiques"] },
+    { title:"Rapport complet", features:["Audit financier complet","Scénarios de croissance","Optimisations fiscales","Présentation investisseurs"] }
+  ];
+  function selectService(i){
+    document.querySelectorAll('.service-card').forEach((c,j)=>c.classList.toggle('active',i===j));
+    document.getElementById('details-title').textContent=servicesData[i].title;
+    document.getElementById('details-list').innerHTML=servicesData[i].features.map(f=>`<li><span class="check">✓</span> ${f}</li>`).join('');
+  }
+
+  // FAQ
+  function toggleFaq(i){
+    const a=document.getElementById('fa-'+i), ic=document.getElementById('fi-'+i), open=a.classList.contains('open');
+    document.querySelectorAll('.faq-answer').forEach(x=>x.classList.remove('open'));
+    document.querySelectorAll('[id^="fi-"]').forEach(x=>x.textContent='+');
+    if(!open){a.classList.add('open');ic.textContent='−';}
+  }
+
+  // DIAGNOSTIC
+  let currentStep=0;
+  const totalSteps=5;
+
+  function openDiagnostic(){
+    document.getElementById('modal').classList.add('open');
+    currentStep=0;
+    showStep(0);
+    document.getElementById('form-view').style.display='block';
+    document.getElementById('rapport-view').style.display='none';
+  }
+  function closeDiagnostic(){
+    document.getElementById('modal').classList.remove('open');
+  }
+  function closeIfOutside(e){
+    if(e.target.id==='modal') closeDiagnostic();
+  }
+
+  function showStep(s){
+    for(let i=0;i<totalSteps;i++) document.getElementById('q'+i).style.display=i===s?'block':'none';
+    document.getElementById('step-info').textContent=`Étape ${s+1} sur ${totalSteps}`;
+    document.getElementById('progress').style.width=((s+1)/totalSteps*100)+'%';
+    document.getElementById('btn-prev').style.display=s>0?'block':'none';
+    document.getElementById('btn-next').textContent=s===totalSteps-1?'Voir mon rapport →':'Continuer →';
+  }
+
+  function nextStep(){
+    if(currentStep===totalSteps-1){ genererRapport(); return; }
+    currentStep++;
+    showStep(currentStep);
+  }
+  function prevStep(){
+    if(currentStep>0){ currentStep--; showStep(currentStep); }
+  }
+
+  function genererRapport(){
+    const nom=document.getElementById('nom').value||'Vous';
+    const tresorerie=document.getElementById('tresorerie').value;
+    const delai=document.getElementById('delai').value;
+    const dettes=document.getElementById('dettes').value;
+    const resultat=document.getElementById('resultat').value;
+    const probleme=document.getElementById('probleme').value;
+
+    let score=6;
+    if(tresorerie==='Très stable') score+=2;
+    else if(tresorerie==='Stable') score+=1;
+    else if(tresorerie==='Souvent tendue') score-=1.5;
+    if(delai==='Moins de 15 jours') score+=1;
+    else if(delai==='Plus de 60 jours') score-=1;
+    if(dettes==='Non, aucune') score+=1;
+    else if(dettes==='Plus de 20 000€') score-=1;
+    if(resultat==='Plus de 50 000€') score+=1;
+    score=Math.min(10,Math.max(2,score));
+
+    const forts=[];
+    const faibles=[];
+    const recos=[];
+
+    if(tresorerie==='Très stable'||tresorerie==='Stable') forts.push('Trésorerie bien maîtrisée');
+    if(dettes==='Non, aucune') forts.push('Absence de dettes : structure financière saine');
+    if(delai==='Moins de 15 jours'||delai==='15 à 30 jours') forts.push('Bons délais de paiement clients');
+    if(forts.length===0) forts.push('Activité régulière et stable');
+
+    if(tresorerie==='Souvent tendue') faibles.push('Trésorerie tendue : risque de rupture');
+    if(delai==='Plus de 60 jours') faibles.push('Délais clients trop longs : argent bloqué');
+    if(dettes==='Plus de 20 000€') faibles.push('Endettement élevé à surveiller');
+    if(faibles.length===0) faibles.push('Quelques optimisations restent possibles');
+
+    if(tresorerie==='Souvent tendue') recos.push('Mettre en place des relances clients automatiques');
+    if(delai==='Plus de 60 jours') recos.push('Réduire les délais clients à 30j maximum');
+    recos.push('Faire un tableau de bord mensuel de trésorerie');
+    recos.push('Comparer vos ratios avec la moyenne de votre secteur');
+
+    document.getElementById('score-num').textContent=score.toFixed(1);
+    document.getElementById('score-label').textContent=score>=7?'✅ Bonne santé financière':score>=5?'⚠️ À surveiller':'🔴 Attention requise';
+    document.getElementById('rapport-date').textContent='Analyse du '+new Date().toLocaleDateString('fr-FR')+' - '+nom;
+    document.getElementById('points-forts').innerHTML=forts.map(f=>`<div class="point good">✓ ${f}</div>`).join('');
+    document.getElementById('points-faibles').innerHTML=faibles.map(f=>`<div class="point bad">✗ ${f}</div>`).join('');
+    document.getElementById('recommandations').innerHTML=recos.slice(0,3).map((r,i)=>`<div class="point reco">${i+1}. ${r}</div>`).join('');
+
+    document.getElementById('form-view').style.display='none';
+    document.getElementById('rapport-view').style.display='block';
+  }
+
+  function demanderAnalyse(){
+    alert('Merci pour votre intérêt ! Contactez-nous pour démarrer votre analyse complète à 300€.\n\nNous vous répondrons dans les 24h.');
+  }
+</script>
+</body>
+</html>
