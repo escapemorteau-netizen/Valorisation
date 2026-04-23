@@ -64,38 +64,38 @@ export default function ValorisationSite() {
   ];
 
   return (
-    <div style={{ fontFamily: "var(--font-sans)", color: "var(--color-text-primary)", background: "var(--color-background-primary)" }}>
+    <div style={{ fontFamily: "'Poppins', sans-serif", color: "#1a1a1a", background: "#ffffff" }}>
       
       {/* Navigation */}
-      <nav style={{ padding: "1.5rem 2rem", borderBottom: "0.5px solid var(--color-border-tertiary)", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, background: "var(--color-background-primary)", zIndex: 100 }}>
+      <nav style={{ padding: "1.5rem 2rem", borderBottom: "0.5px solid #e0e0e0", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, background: "#ffffff", zIndex: 100 }}>
         <div style={{ fontSize: "20px", fontWeight: "500", background: "linear-gradient(135deg, #185FA5 0%, #1D9E75 100%)", backgroundClip: "text", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>FinAnalyse</div>
         <div style={{ display: "flex", gap: "2rem", fontSize: "14px" }}>
-          <a href="#services" style={{ color: "var(--color-text-secondary)", cursor: "pointer", textDecoration: "none" }}>Services</a>
-          <a href="#tarifs" style={{ color: "var(--color-text-secondary)", cursor: "pointer", textDecoration: "none" }}>Tarifs</a>
-          <a href="#faq" style={{ color: "var(--color-text-secondary)", cursor: "pointer", textDecoration: "none" }}>FAQ</a>
+          <a href="#services" style={{ color: "#666", cursor: "pointer", textDecoration: "none" }}>Services</a>
+          <a href="#tarifs" style={{ color: "#666", cursor: "pointer", textDecoration: "none" }}>Tarifs</a>
+          <a href="#faq" style={{ color: "#666", cursor: "pointer", textDecoration: "none" }}>FAQ</a>
         </div>
       </nav>
 
       {/* Hero */}
       <section style={{ padding: "4rem 2rem", background: "linear-gradient(135deg, #E6F1FB 0%, #E1F5EE 100%)", textAlign: "center" }}>
-        <h1 style={{ fontSize: "48px", fontWeight: "500", marginBottom: "1rem", color: "var(--color-text-primary)" }}>Comprenez votre bilan en 5 minutes</h1>
-        <p style={{ fontSize: "18px", color: "var(--color-text-secondary)", maxWidth: "600px", margin: "0 auto 2rem", lineHeight: "1.6" }}>Diagnostic gratuit de votre santé financière. Analyse complète. Recommandations actionnables.</p>
+        <h1 style={{ fontSize: "48px", fontWeight: "500", marginBottom: "1rem", color: "#1a1a1a" }}>Comprenez votre bilan en 5 minutes</h1>
+        <p style={{ fontSize: "18px", color: "#666", maxWidth: "600px", margin: "0 auto 2rem", lineHeight: "1.6" }}>Diagnostic gratuit de votre santé financière. Analyse complète. Recommandations actionnables.</p>
         <button onClick={() => window.location.href = "#diagnostic"} style={{ padding: "12px 32px", fontSize: "16px", fontWeight: "500", background: "linear-gradient(135deg, #185FA5 0%, #0C447C 100%)", color: "white", border: "none", borderRadius: "8px", cursor: "pointer", boxShadow: "0 4px 12px rgba(24, 95, 165, 0.3)" }}>Commencer (gratuit)</button>
       </section>
 
       {/* Services Section */}
       <section id="services" style={{ padding: "3rem 2rem", maxWidth: "1200px", margin: "0 auto" }}>
         <h2 style={{ fontSize: "32px", fontWeight: "500", marginBottom: "0.5rem", textAlign: "center" }}>Nos services</h2>
-        <p style={{ fontSize: "16px", color: "var(--color-text-secondary)", textAlign: "center", marginBottom: "2rem" }}>Du diagnostic gratuit à l'analyse complète</p>
+        <p style={{ fontSize: "16px", color: "#666", textAlign: "center", marginBottom: "2rem" }}>Du diagnostic gratuit à l'analyse complète</p>
         
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "20px", marginBottom: "2rem" }}>
           {services.map((service, idx) => {
             const Icon = service.icon;
             return (
-              <div key={idx} onClick={() => setActiveService(idx)} style={{ padding: "1.5rem", background: "var(--color-background-primary)", border: `2px solid ${activeService === idx ? "#185FA5" : "var(--color-border-tertiary)"}`, borderRadius: "12px", cursor: "pointer", transition: "all 0.3s", transform: activeService === idx ? "scale(1.02)" : "scale(1)" }}>
+              <div key={idx} onClick={() => setActiveService(idx)} style={{ padding: "1.5rem", background: "#ffffff", border: `2px solid ${activeService === idx ? "#185FA5" : "#e0e0e0"}`, borderRadius: "12px", cursor: "pointer", transition: "all 0.3s", transform: activeService === idx ? "scale(1.02)" : "scale(1)" }}>
                 <Icon size={32} style={{ color: "#185FA5", marginBottom: "12px" }} />
                 <h3 style={{ fontSize: "18px", fontWeight: "500", marginBottom: "4px" }}>{service.title}</h3>
-                <p style={{ fontSize: "13px", color: "var(--color-text-secondary)", marginBottom: "12px" }}>{service.desc}</p>
+                <p style={{ fontSize: "13px", color: "#999", marginBottom: "12px" }}>{service.desc}</p>
                 <div style={{ fontSize: "24px", fontWeight: "500", color: "#185FA5", marginBottom: "16px" }}>{service.price}</div>
               </div>
             );
@@ -103,7 +103,7 @@ export default function ValorisationSite() {
         </div>
 
         {/* Service Details */}
-        <div style={{ padding: "2rem", background: "var(--color-background-secondary)", borderRadius: "12px", marginTop: "2rem" }}>
+        <div style={{ padding: "2rem", background: "#f9f9f9", borderRadius: "12px", marginTop: "2rem" }}>
           <h3 style={{ marginBottom: "1rem" }}>{services[activeService].title}</h3>
           <ul style={{ listStyle: "none", padding: 0 }}>
             {services[activeService].features.map((feature, idx) => (
@@ -116,15 +116,15 @@ export default function ValorisationSite() {
       </section>
 
       {/* Process */}
-      <section style={{ padding: "3rem 2rem", background: "var(--color-background-secondary)", marginTop: "2rem" }}>
+      <section style={{ padding: "3rem 2rem", background: "#f9f9f9", marginTop: "2rem" }}>
         <h2 style={{ fontSize: "32px", fontWeight: "500", marginBottom: "2rem", textAlign: "center" }}>Comment ça marche</h2>
         <div style={{ maxWidth: "900px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "20px" }}>
           {steps.map((step, idx) => (
             <div key={idx} style={{ textAlign: "center" }}>
               <div style={{ width: "48px", height: "48px", borderRadius: "50%", background: "linear-gradient(135deg, #185FA5 0%, #1D9E75 100%)", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px", fontWeight: "500", margin: "0 auto 12px" }}>{step.num}</div>
               <h4 style={{ fontWeight: "500", marginBottom: "4px", fontSize: "14px" }}>{step.title}</h4>
-              <p style={{ fontSize: "12px", color: "var(--color-text-secondary)", lineHeight: "1.4" }}>{step.desc}</p>
-              {idx < steps.length - 1 && <div style={{ margin: "12px 0", color: "var(--color-border-tertiary)" }}>↓</div>}
+              <p style={{ fontSize: "12px", color: "#999", lineHeight: "1.4" }}>{step.desc}</p>
+              {idx < steps.length - 1 && <div style={{ margin: "12px 0", color: "#ddd" }}>↓</div>}
             </div>
           ))}
         </div>
@@ -133,7 +133,7 @@ export default function ValorisationSite() {
       {/* CTA */}
       <section style={{ padding: "3rem 2rem", textAlign: "center", background: "linear-gradient(135deg, #E6F1FB 0%, #E1F5EE 100%)" }} id="diagnostic">
         <h2 style={{ fontSize: "32px", fontWeight: "500", marginBottom: "1rem" }}>Prêt à analyser votre bilan ?</h2>
-        <p style={{ fontSize: "16px", color: "var(--color-text-secondary)", marginBottom: "1.5rem" }}>Diagnostic gratuit en 5 minutes, résultats immédiats</p>
+        <p style={{ fontSize: "16px", color: "#666", marginBottom: "1.5rem" }}>Diagnostic gratuit en 5 minutes, résultats immédiats</p>
         <button style={{ padding: "14px 40px", fontSize: "16px", fontWeight: "500", background: "linear-gradient(135deg, #185FA5 0%, #0C447C 100%)", color: "white", border: "none", borderRadius: "8px", cursor: "pointer", boxShadow: "0 4px 12px rgba(24, 95, 165, 0.3)" }}>Commencer le diagnostic</button>
       </section>
 
@@ -142,28 +142,28 @@ export default function ValorisationSite() {
         <h2 style={{ fontSize: "32px", fontWeight: "500", marginBottom: "2rem", textAlign: "center" }}>Tarification simple et transparente</h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "20px" }}>
           {services.map((service, idx) => (
-            <div key={idx} style={{ padding: "1.5rem", background: idx === 1 ? "#E6F1FB" : "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: "12px" }}>
+            <div key={idx} style={{ padding: "1.5rem", background: idx === 1 ? "#E6F1FB" : "#ffffff", border: "0.5px solid #e0e0e0", borderRadius: "12px" }}>
               <div style={{ fontSize: "24px", fontWeight: "500", marginBottom: "8px" }}>{service.price}</div>
               <p style={{ fontSize: "14px", fontWeight: "500", marginBottom: "1rem" }}>{service.title}</p>
-              <p style={{ fontSize: "12px", color: "var(--color-text-secondary)" }}>{service.desc}</p>
+              <p style={{ fontSize: "12px", color: "#999" }}>{service.desc}</p>
             </div>
           ))}
         </div>
-        <p style={{ textAlign: "center", fontSize: "13px", color: "var(--color-text-secondary)", marginTop: "1.5rem" }}>💡 Diagnostic gratuit = parfait pour commencer. Payant = pour approfondir quand vous êtes convaincu.</p>
+        <p style={{ textAlign: "center", fontSize: "13px", color: "#999", marginTop: "1.5rem" }}>💡 Diagnostic gratuit = parfait pour commencer. Payant = pour approfondir quand vous êtes convaincu.</p>
       </section>
 
       {/* FAQ */}
-      <section id="faq" style={{ padding: "3rem 2rem", background: "var(--color-background-secondary)", marginTop: "2rem" }}>
+      <section id="faq" style={{ padding: "3rem 2rem", background: "#f9f9f9", marginTop: "2rem" }}>
         <h2 style={{ fontSize: "32px", fontWeight: "500", marginBottom: "2rem", textAlign: "center" }}>Questions fréquentes</h2>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           {faqs.map((faq, idx) => (
-            <div key={idx} style={{ marginBottom: "12px", border: "0.5px solid var(--color-border-tertiary)", borderRadius: "8px", overflow: "hidden" }}>
-              <button onClick={() => setOpenFaq(openFaq === idx ? null : idx)} style={{ width: "100%", padding: "1rem", background: "var(--color-background-primary)", border: "none", textAlign: "left", fontSize: "14px", fontWeight: "500", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div key={idx} style={{ marginBottom: "12px", border: "0.5px solid #e0e0e0", borderRadius: "8px", overflow: "hidden" }}>
+              <button onClick={() => setOpenFaq(openFaq === idx ? null : idx)} style={{ width: "100%", padding: "1rem", background: "#ffffff", border: "none", textAlign: "left", fontSize: "14px", fontWeight: "500", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 {faq.q}
                 <span style={{ fontSize: "16px" }}>{openFaq === idx ? "−" : "+"}</span>
               </button>
               {openFaq === idx && (
-                <div style={{ padding: "1rem", background: "var(--color-background-secondary)", fontSize: "14px", color: "var(--color-text-secondary)", lineHeight: "1.6" }}>
+                <div style={{ padding: "1rem", background: "#f9f9f9", fontSize: "14px", color: "#666", lineHeight: "1.6" }}>
                   {faq.a}
                 </div>
               )}
@@ -173,7 +173,7 @@ export default function ValorisationSite() {
       </section>
 
       {/* Footer */}
-      <footer style={{ padding: "2rem", textAlign: "center", fontSize: "12px", color: "var(--color-text-secondary)", borderTop: "0.5px solid var(--color-border-tertiary)", marginTop: "2rem" }}>
+      <footer style={{ padding: "2rem", textAlign: "center", fontSize: "12px", color: "#999", borderTop: "0.5px solid #e0e0e0", marginTop: "2rem" }}>
         <p>© 2026 FinAnalyse. Service d'analyse financière pour indépendants et freelances.</p>
       </footer>
     </div>

@@ -1,142 +1,69 @@
 # FinAnalyse - Site Professionnel
 
-Site web moderne et professionnel pour présenter les services de diagnostic financier et valorisation d'entreprise pour freelances et indépendants.
+Site de diagnostic financier pour freelances et indépendants.
 
-## 🎯 Caractéristiques
-
-✅ **Design moderne** - Interface minimaliste et profesionnelle  
-✅ **Responsive** - Fonctionne parfaitement sur mobile, tablette, desktop  
-✅ **Performance** - Score 90+ sur Lighthouse  
-✅ **SEO optimisé** - Balises meta, structure sémantique  
-✅ **Services intégrés** - Tarification, FAQ, processus expliqué  
-✅ **Zéro configuration** - Prêt à déployer en 5 minutes  
-
-## 🚀 Déploiement rapide
-
-### Sur Vercel (Recommandé - Gratuit)
-
-```bash
-# Option 1 : Via CLI
-npm install -g vercel
-vercel
-
-# Option 2 : Drag & Drop
-# Va sur vercel.com, drag & drop le dossier
-```
-
-Ton site sera en ligne en moins de 2 minutes ! 🎉
-
-Voir [DEPLOYMENT.md](./DEPLOYMENT.md) pour les instructions complètes.
-
-## 📁 Structure du projet
+## 📁 Structure des fichiers
 
 ```
 finanalyse-site/
-├── App.jsx           - Composant React principal
-├── index.js          - Point d'entrée React
-├── index.html        - Structure HTML
-├── index.css         - Styles globaux
-├── package.json      - Dépendances
-├── DEPLOYMENT.md     - Guide de déploiement
-└── README.md         - Ce fichier
+├── package.json           ← Dépendances
+├── vercel.json            ← Configuration Vercel
+├── .gitignore             ← Fichiers à ignorer
+├── public/
+│   └── index.html         ← HTML principal
+└── src/
+    ├── index.js           ← Entrée React
+    └── App.jsx            ← Composant principal
 ```
 
-## 🛠️ Développement local
+## 🚀 Déploiement rapide sur Vercel
 
-```bash
-# Installe les dépendances
-npm install
+### Étape 1 : Créer un compte GitHub
+1. Va sur https://github.com/signup
+2. Crée un compte
+3. Crée un nouveau repository "finanalyse-site"
 
-# Démarre le serveur local
-npm start
+### Étape 2 : Upload les fichiers
+1. Dans ton repo GitHub, clique "Add file" → "Upload files"
+2. Glisse-dépose TOUS les fichiers ci-dessus
+3. Clique "Commit changes"
 
-# Ouvre http://localhost:3000
-```
+### Étape 3 : Déployer sur Vercel
+1. Va sur https://vercel.com
+2. Click "New Project" ou "Import Project"
+3. Connecte ton GitHub
+4. Sélectionne "finanalyse-site"
+5. Click "Deploy"
 
-## 🎨 Personnalisation
+**Attends 2-3 minutes... Ton site est en ligne !** 🎉
 
-### Modifier les tarifs/services
-Édite le tableau `services` dans `App.jsx`
+## 📝 Fichiers à télécharger
 
-### Changer les couleurs
-- Bleu principal: `#185FA5`
-- Teal: `#1D9E75`
-- Bleu foncé: `#0C447C`
+✅ TOUS ces fichiers :
+- `package.json`
+- `vercel.json`
+- `.gitignore`
+- `public/index.html`
+- `src/index.js`
+- `src/App.jsx`
 
-### Ajouter un formulaire de contact
-Ajoute un formulaire HTML dans la section "CTA"
+## 🔧 Pour modifier le site
 
-## 📊 Services présentés
+Édite `src/App.jsx` pour changer :
+- Titre, description
+- Services, tarifs
+- FAQ
+- Couleurs
 
-1. **Diagnostic gratuit** (0€)
-   - Questionnaire 5 min
-   - Score de santé
-   - Recommandations
-
-2. **Analyse financière** (300€)
-   - Ratios détaillés
-   - Benchmarking
-   - Plan d'action
-
-3. **Valorisation approfondie** (800€)
-   - Multiples de valorisation
-   - DCF complet
-   - Scénarios de croissance
-
-4. **Rapport complet** (1500€)
-   - Audit financier
-   - Optimisations fiscales
-   - Présentation investisseurs
-
-## 📱 Sections du site
-
-- **Navigation** - Menu sticky avec liens vers les sections
-- **Hero** - Accroche avec CTA principal
-- **Services** - Présentation des 4 services avec détails
-- **Processus** - 5 étapes expliquées
-- **CTA** - Appel à action pour le diagnostic
-- **Tarification** - Comparaison des prix
-- **FAQ** - Questions fréquentes avec accordéon
-- **Footer** - Copyright et infos légales
-
-## 🌍 Domaine personnalisé
-
-Une fois en ligne sur Vercel, tu peux ajouter un domaine personnalisé :
-
-1. Va sur ton dashboard Vercel
-2. Sélectionne le projet
-3. Settings → Domains
-4. Ajoute ton domaine
-
-## 📈 SEO
-
-Le site inclut :
-- ✅ Meta tags optimisés
-- ✅ Titres et descriptions
-- ✅ Structure sémantique
-- ✅ URLs clean
-- ✅ Mobile friendly
-
-## 🔄 Mise à jour du contenu
-
-Pour modifier le contenu :
-
-1. Édite `App.jsx`
-2. Modifie les textes, tarifs, FAQ
-3. Sauvegarde
-4. Push sur GitHub (ou redéploie sur Vercel)
-5. Vercel redéploiera automatiquement
+Puis commit sur GitHub → Vercel redéploie automatiquement !
 
 ## 📞 Support
 
-- Documentation Vercel: https://vercel.com/docs
-- React Docs: https://react.dev
-- Questions? Vérifie DEPLOYMENT.md
-
-## 📝 Licence
-
-Projet personnel - Libre d'utilisation
+Si erreur 404 après déploiement :
+1. Vérifie que `vercel.json` est bien uploadé
+2. Vérifie que tous les fichiers src/ et public/ existent
+3. Redéploie sur Vercel
 
 ---
 
-**Prêt à lancer ? Voir [DEPLOYMENT.md](./DEPLOYMENT.md)** 🚀
+**Prêt ? Commence par créer un compte GitHub !** 🚀
